@@ -109,7 +109,7 @@
             </div>
         
             <!-- Historical Performance Reference (same height as Key Market Insights) -->
-            <div class="insight-box">
+            <div class="insight-box" id = "backendresponse">
                 <h4>Historical Performance Reference</h4>
                 <p>Highest Price: $335.4 (July 2024)</p>
                 <p class="green-text">Growth Trend: +5%</p>
@@ -195,18 +195,30 @@
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            loadActionableInsights(data.actionableSuggestions);
-            loadImportantInsight(data.summary); // Load summary into the important insight box
-            loadSentimentAnalysisData(data.sentiment)
+            
+            loadActionableInsights(dummyData.actionableSuggestions);
+            loadImportantInsight(dummyData.summary); // Load dummy summary into the important insight box
+            loadSentimentAnalysisData(dummyData.sentiment)
+            loadinEmptyDiv(data)
             
         } catch (error) {
             console.error('Error loading sentiment data:', error);
             loadActionableInsights(dummyData.actionableSuggestions);
             loadImportantInsight(dummyData.summary); // Load dummy summary into the important insight box
             loadSentimentAnalysisData(dummyData.sentiment)
+
+            loadinEmptyDiv(JSON.stringify(dummyData)); // Pretty print JSON
+
+
+
         }
     }
     
+    function loadinEmptyDiv(data){
+        const importantInsightDiv = document.getElementById('backendresponse');
+        importantInsightDiv.innerHTML= `<p> ${data} </p>`
+
+    }
     function loadSentimentAnalysisData(sentiment) {
         const importantInsightDiv = document.getElementById('sentimentbox');
         // Clear the previous content and add the new sentiment data
