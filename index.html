@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equities Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button class="button active" onclick="toggleActive(this)">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="equities-icon" width="20"> Equities
+            </button>
+            <button class="button" onclick="toggleActive(this)">
+                <img src="https://cdn-icons-png.flaticon.com/512/1/1170.png" alt="commodities-icon" width="20"> Commodities
+            </button>
+        </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Stocks Section -->
+        <div class="top-stocks">
+            <div class="stock-card">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Apple Inc</h3>
+                </div>
+                <p>Current Value: $145.93</p>
+                <p>+75% Positive</p>
+            </div>
+            <div class="stock-card">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Tesla Inc</h3>
+                </div>
+                <p>Current Value: $177.90</p>
+                <p>+60% Positive</p>
+            </div>
+            <div class="stock-card negative">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Amazon</h3>
+                </div>
+                <p>Current Value: $203.65</p>
+                <p>-40% Negative</p>
+            </div>
+            <div class="stock-card">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Microsoft</h3>
+                </div>
+                <p>Current Value: $151.74</p>
+                <p>+51% Neutral</p>
+            </div>
+            <div class="stock-card negative">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Meta</h3>
+                </div>
+                <p>Current Value: $151.74</p>
+                <p>-51% Neutral</p>
+            </div>
+            <div class="stock-card">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Google</h3>
+                </div>
+                <p>Current Value: $151.74</p>
+                <p>+51% Neutral</p>
+            </div>
+            <div class="stock-card">
+                <div class="stock-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
+                    <h3>Walmart</h3>
+                </div>
+                <p>Current Value: $151.74</p>
+                <p>+51% Neutral</p>
+            </div>
+        </div>
+
+        <!-- Insights Section -->
+        <div class="insights-section">
+            <!-- Actionable Insights (Taller) -->
+            <div class="actionable-insight">
+                <h4>Actionable Insights</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        
+            <!-- Key Market Insights (Half height) -->
+            <div class="insight-box">
+                <h4>Key Market Insights</h4>
+                <p>Current Stock Price (MSFT): $320.4</p>
+                <p>Highest Price: $335.4 (July 2024)</p>
+                <p>Growth Trend: +5%</p>
+            </div>
+        
+            <!-- Historical Performance Reference (same height as Key Market Insights) -->
+            <div class="insight-box">
+                <h4>Historical Performance Reference</h4>
+                <p>Highest Price: $335.4 (July 2024)</p>
+                <p>Growth Trend: +5%</p>
+            </div>
+        
+            <!-- Major Events Affecting Stocks (Half height) -->
+            <div class="insight-box">
+                <h4>Major Events Affecting Stocks</h4>
+                <p>Microsoft-OpenAI partnership announced on Oct 15, 2024</p>
+            </div>
+        
+            <!-- Relevant News and Articles (same height as Major Events Affecting Stocks) -->
+            <div class="insight-box">
+                <h4>Relevant News and Articles</h4>
+                <p>Microsoft’s strategic moves in AI. Forbes | 15 Oct 2024</p>
+                <p>Tech giants and cloud computing. Bloomberg | 01 Oct 2024</p>
+            </div>
+        </div>
+        <!-- Chart and Company Selector Container -->
+        <div class="chart-company-container">
+            <!-- Chart Section -->
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <!-- Sidebar (Company Selector) -->
+            <div class="company-selector">
+                <h4>Select Company</h4>
+                <div class="company-list">
+                    <button class="button" onclick="loadChart('Apple')">Apple Inc</button>
+                    <button class="button" onclick="loadChart('Tesla')">Tesla Inc</button>
+                    <button class="button" onclick="loadChart('Amazon')">Amazon</button>
+                    <button class="button" onclick="loadChart('Microsoft')">Microsoft</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
