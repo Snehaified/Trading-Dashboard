@@ -45,9 +45,22 @@ body {
 
 .top-stocks {
     display: flex;
-    overflow-x: auto;
+    overflow-x: auto; /* Keep horizontal scrolling */
     white-space: nowrap;
     margin-bottom: 20px;
+    height: 220px; /* Increase this value to your desired height */
+    padding: 10px;
+}
+
+.stock-card {
+    display: inline-block;
+    background-color: #fff;
+    padding: 20px;
+    margin-right: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 200px;
+    height: 100%; /* Make sure cards take full height of the parent */
 }
 /* Flex container for icon and heading */
 .stock-header {
@@ -68,52 +81,66 @@ body {
     margin: 0;
 }
 
-.stock-card {
-    width: 150px;
-    padding: 15px;
-    margin-right: 15px;
-    background-color: #eafaf1;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-}
-
 .stock-card.negative {
     background-color: #ffe6e6;
 }
 .chart-company-container {
     display: flex;
     justify-content: space-between;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 20px;
-    height: 400px;  /* Set the height of the container */
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
 }
 
 .chart-container {
-    width: 70%;  /* Set the width for the chart */
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
+    flex: 4; /* More space for the chart */
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 500px; /* Adjust height as per need */
 }
 
 .company-selector {
-    width: 25%;
-    background-color: #f4f4f4;
+    flex: 1; /* Less space for the selector */
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 90%;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-left: 20px;
+    height: 500px; /* Match chart height */
 }
 
 .company-list {
-    max-height: 100%;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
+
+.company-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.company-item:hover {
+    background-color: #e0e0e0;
+}
+
+.company-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
 /* General insights section layout using grid */
 .insights-section {
     display: grid;
