@@ -59,11 +59,22 @@ const stockData = {
 };
 
 // Function to load the chart
-function loadChart(company) {
+function loadChart(company, isDefault = false) {
     if (stockChart) {
         stockChart.destroy(); // Clear the previous chart before drawing a new one
     }
+    if (!isDefault) {
+        var buttons = document.querySelectorAll('.company-item');
+        buttons.forEach(function(button) {
+            button.classList.remove('active');
+        });
 
+        // Add active class to the clicked button
+        event.target.closest('.company-item').classList.add('active');
+    } else {
+        // Add active class to Apple button initially
+        document.querySelector('.company-item[data-company="Apple"]').classList.add('active');
+    }
     const selectedData = stockData[company];
 
     stockChart = new Chart(ctx, {

@@ -8,7 +8,17 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
+    <header class="header">
+        <div class="logo-container">
+            <img src="./icons/image 3.png" alt="Company Logo" class="company-logo">
+        </div>
+        <div class="icon-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search Icon" class="header-icon">
+            <img src="./icons/UK Flag.png" alt="Language Icon" class="header-icon">
+            <img src="./icons/Drop Down.png" alt="Dropdown Icon" class="dropdown-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Profile Icon" class="header-icon">
+        </div>
+    </header>
 <div class="dashboard">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -95,14 +105,14 @@
                 <h4>Key Market Insights</h4>
                 <p>Current Stock Price (MSFT): $320.4</p>
                 <p>Highest Price: $335.4 (July 2024)</p>
-                <p>Growth Trend: +5%</p>
+                <p class="green-text">Growth Trend: +5%</p>
             </div>
         
             <!-- Historical Performance Reference (same height as Key Market Insights) -->
             <div class="insight-box">
                 <h4>Historical Performance Reference</h4>
                 <p>Highest Price: $335.4 (July 2024)</p>
-                <p>Growth Trend: +5%</p>
+                <p class="green-text">Growth Trend: +5%</p>
             </div>
         
             <!-- Major Events Affecting Stocks (Half height) -->
@@ -130,20 +140,20 @@
     <div class="company-selector">
         <h4>Select Company</h4>
         <div class="company-list">
-            <button class="company-item" onclick="loadChart('Apple')">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple" class="company-icon">
+            <button class="company-item" data-company="Apple" onclick="loadChart('Apple')">
+                <img src="./icons/391px-Apple_logo_black 1.png" alt="Apple" class="company-icon">
                 Apple Inc
             </button>
             <button class="company-item" onclick="loadChart('Tesla')">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733548.png" alt="Tesla" class="company-icon">
+                <img src="./icons/tesla-motors-1 1.png" alt="Tesla" class="company-icon">
                 Tesla Inc
             </button>
             <button class="company-item" onclick="loadChart('Amazon')">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732197.png" alt="Amazon" class="company-icon">
+                <img src="./icons/amazon-icon-1 1.png" alt="Amazon" class="company-icon">
                 Amazon
             </button>
             <button class="company-item" onclick="loadChart('Microsoft')">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" alt="Microsoft" class="company-icon">
+                <img src="./icons/microsoft 1.png" alt="Microsoft" class="company-icon">
                 Microsoft
             </button>
         </div>
