@@ -212,9 +212,9 @@
         // Clear the previous content and add the new sentiment data
         importantInsightDiv.innerHTML = `
             <h4>Market Sentiments</h4>
-            <p>Bullish: ${sentiment.bullish}%</p>
-            <p>Bearish: ${sentiment.bearish}%</p>
-            <p>Neutral: ${sentiment.neutral}%</p>
+            <p style="color: green;">Bullish: ${sentiment.bullish}%</p>
+            <p style="color: red;">Bearish: ${sentiment.bearish}%</p>
+            <p style="color: orange;">Neutral: ${sentiment.neutral}%</p>
         `;
     }
     
