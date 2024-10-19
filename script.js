@@ -3,6 +3,28 @@ const ctx = document.getElementById('myChart').getContext('2d');
 let stockChart;
 
 // Stock Data for different companies
+
+
+
+// function displayData(data) {
+//     // Display sentiment data
+//     const sentimentDiv = document.getElementById('sentiment');
+//     sentimentDiv.innerHTML = `
+//         <h2>Sentiment Analysis</h2>
+//         <p>Bullish: ${data.sentiment.bullish}%</p>
+//         <p>Bearish: ${data.sentiment.bearish}%</p>
+//         <p>Neutral: ${data.sentiment.neutral}%</p>
+//     `;
+
+//     // Display actionable suggestions (this is now handled separately)
+//     const suggestionsDiv = document.getElementById('suggestions');
+//     suggestionsDiv.innerHTML = '<h2>Actionable Suggestions</h2>' + data.actionableSuggestions.map(suggestion => `<p>${suggestion}</p>`).join('');
+
+//     // Display summary
+//     const summaryDiv = document.getElementById('summary');
+//     summaryDiv.innerHTML = '<h2>Summary</h2>' + data.summary.map(item => `<p>${item}</p>`).join('');
+// }
+
 const stockData = {
     Apple: {
         labels: ['10am', '11am', '12pm', '1pm', '2pm', '3pm'],

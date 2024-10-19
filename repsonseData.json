@@ -1,0 +1,22 @@
+{
+    "sentiment": {
+      "bullish": 90,
+      "bearish": 5,
+      "neutral": 5
+    },
+    "actionableSuggestions": [
+      "You should consider buying Netflix stock as it's showing solid growth.",
+      "Consider diversifying your portfolio with tech stocks.",
+      "Monitor earnings reports closely for potential investment opportunities.",
+      "Stay informed about economic indicators that may affect market trends.",
+      "Evaluate the impact of upcoming federal policies on market performance."
+    ],
+    "summary": [
+      "S&P 500 hits a record high.",
+      "Netflix stock surges after strong earnings report.",
+      "Technology sector continues to drive market growth.",
+      "Investors remain optimistic about the upcoming quarter.",
+      "Fears of inflation subside, boosting market confidence."
+    ]
+  }
+  

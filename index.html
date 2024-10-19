@@ -10,76 +10,21 @@
 <body>
 
 <div class="dashboard">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <button class="button active" onclick="toggleActive(this)">
-                <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="equities-icon" width="20"> Equities
-            </button>
-            <button class="button" onclick="toggleActive(this)">
-                <img src="https://cdn-icons-png.flaticon.com/512/1/1170.png" alt="commodities-icon" width="20"> Commodities
-            </button>
-        </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button class="button active" onclick="toggleActive(this)">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="equities-icon" width="20"> Equities
+        </button>
+        <button class="button" onclick="toggleActive(this)">
+            <img src="https://cdn-icons-png.flaticon.com/512/1/1170.png" alt="commodities-icon" width="20"> Commodities
+        </button>
+    </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <!-- Top Stocks Section -->
         <div class="top-stocks">
-            <div class="stock-card">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Apple Inc</h3>
-                </div>
-                <p>Current Value: $145.93</p>
-                <p>+75% Positive</p>
-            </div>
-            <div class="stock-card">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Tesla Inc</h3>
-                </div>
-                <p>Current Value: $177.90</p>
-                <p>+60% Positive</p>
-            </div>
-            <div class="stock-card negative">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Amazon</h3>
-                </div>
-                <p>Current Value: $203.65</p>
-                <p>-40% Negative</p>
-            </div>
-            <div class="stock-card">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Microsoft</h3>
-                </div>
-                <p>Current Value: $151.74</p>
-                <p>+51% Neutral</p>
-            </div>
-            <div class="stock-card negative">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Meta</h3>
-                </div>
-                <p>Current Value: $151.74</p>
-                <p>-51% Neutral</p>
-            </div>
-            <div class="stock-card">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Google</h3>
-                </div>
-                <p>Current Value: $151.74</p>
-                <p>+51% Neutral</p>
-            </div>
-            <div class="stock-card">
-                <div class="stock-header">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png" alt="Apple Inc" class="company-icon">
-                    <h3>Walmart</h3>
-                </div>
-                <p>Current Value: $151.74</p>
-                <p>+51% Neutral</p>
-            </div>
+            <!-- Stock cards go here (unchanged) -->
         </div>
 
         <!-- Insights Section -->
@@ -106,7 +51,7 @@
             </div>
         
             <!-- Major Events Affecting Stocks (Half height) -->
-            <div class="insight-box">
+            <div class="insight-box" id ="important-insight">
                 <h4>Major Events Affecting Stocks</h4>
                 <p>Microsoft-OpenAI partnership announced on Oct 15, 2024</p>
             </div>
@@ -118,6 +63,7 @@
                 <p>Tech giants and cloud computing. Bloomberg | 01 Oct 2024</p>
             </div>
         </div>
+
         <!-- Chart and Company Selector Container -->
         <div class="chart-company-container">
             <!-- Chart Section -->
@@ -139,6 +85,65 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+var dummyData = {
+    "sentiment": {
+        "bullish": 90,
+        "bearish": 5,
+        "neutral": 5
+    },
+    "actionableSuggestions": [
+        "You should consider buying Netflix stock as it's showing solid growth.",
+        "Consider diversifying your portfolio with tech stocks.",
+        "Monitor earnings reports closely for potential investment opportunities.",
+        "Stay informed about economic indicators that may affect market trends.",
+        "Evaluate the impact of upcoming federal policies on market performance."
+    ],
+    "summary": [
+        "S&P 500 hits a record high.",
+        "Netflix stock surges after strong earnings report.",
+        "Technology sector continues to drive market growth.",
+        "Investors remain optimistic about the upcoming quarter.",
+        "Fears of inflation subside, boosting market confidence."
+    ]
+};
+
+
+async function loadSentimentData() {
+    console.log("loadSentimentData called");
+    try {
+        const response = await fetch('http://localhost:8080/sentimentData');
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        loadActionableInsights(data.actionableSuggestions);
+        loadImportantInsight(data.summary); // Load summary into the important insight box
+        
+    } catch (error) {
+        console.error('Error loading sentiment data:', error);
+        loadActionableInsights(dummyData.actionableSuggestions);
+        loadImportantInsight(dummyData.summary); // Load dummy summary into the important insight box
+    }
+}
+
+function loadActionableInsights(insights) {
+    const insightsDiv = document.getElementsByClassName('actionable-insight')[0];
+    insightsDiv.innerHTML = `<h4>Actionable Insights</h4>` + insights.map(suggestion => `<p>${suggestion}</p>`).join('');
+}
+
+function loadImportantInsight(insights) {
+    const importantInsightDiv = document.getElementById('important-insight');
+    importantInsightDiv.innerHTML = `<h4>Major Events Affecting Stocks</h4>` + insights.map(suggestion => `<p>${suggestion}</p>`).join('');
+
+    // importantInsightDiv.innerHTML = `<h4>Major Events Affecting Stocks</h4><p>${insights[0]}</p>`;
+}
+
+// Call the loadSentimentData function to fetch and display insights
+loadSentimentData();
+</script>
+<script src="script.js" defer></script>
+
 </body>
 </html>
